@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantasma Darknet Market</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            color: #00ff00;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #00cc00;
+        }
+        h1 {
+            color: #00ff00;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .terminal-text {
+            background-color: #000;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 20px;
+            font-size: 14px;
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #00ff00;
+            animation: blink 1s steps(2, start) infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .category-icon {
+            margin-right: 10px;
+        }
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .item {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+        .item-badge {
+            color: #00ff00;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .item-title {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #333;
+            color: #00ff00;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+        footer a {
+            color: #00ff00;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="social-icons">
+                <a href="https://rumble.com/user/DoingFedTime" target="_blank"><i class="fab fa-rumble"></i></a>
+                <a href="https://www.youtube.com/@sam_bent" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/DoingFedTime" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/sam-bent/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/DoingFedTime" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://sambent.com" target="_blank"><i class="fas fa-globe"></i></a>
+                <a href="https://www.instagram.com/sambentoffical/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="http://dailydwusclfsu7fzwydc5emidexnesmdlzqmz2dxnx5x4thl42vj4qd.onion/" target="_blank"><i class="fas fa-user-secret"></i></a>
+            </div>
+            <h1>Phantasma Darknet Market</h1>
+            <div class="subtitle">A secure marketplace for anonymous transactions</div>
+            <div class="terminal-text" id="terminalText">
+                <span id="cursor" class="cursor"></span>
+            </div>
+        </header>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-icon">🛒</div>
+                <h2 class="category-title">Market Pages</h2>
+            </div>
+            <div class="items">
+                <div class="item market">
+                    <div class="item-badge">Main</div>
+                    <h3 class="item-title">Market Homepage</h3>
+                    <a href="403 Forbidden_http___wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion_assets_.html" class="btn">View Page</a>
+                </div>
+                <div class="item market">
+                    <div class="item-badge">Security</div>
+                    <h3 class="item-title">PGP Key</h3>
+                    <a href="Define PGP key _ Phantasma_http___wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion_set_pgp-key.html" class="btn">View Page</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-icon">👤</div>
+                <h2 class="category-title">Account Pages</h2>
+            </div>
+            <div class="items">
+                <div class="item profile">
+                    <div class="item-badge">Auth</div>
+                    <h3 class="item-title">Register</h3>
+                    <a href="Register _ Phantasma_http___wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion_register.html" class="btn">View Page</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-icon">🔐</div>
+                <h2 class="category-title">Security</h2>
+            </div>
+            <div class="items">
+                <div class="item hacking">
+                    <div class="item-badge">PGP</div>
+                    <h3 class="item-title">PGP Key</h3>
+                    <a href="pgp_http___wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion_pgp.txt.html" class="btn">View Page</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2024 Phantasma Market</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = "Welcome to Phantasma Market";
+            const terminalText = document.getElementById('terminalText');
+            const cursor = document.getElementById('cursor');
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    const span = document.createElement('span');
+                    span.textContent = text.charAt(i);
+                    span.style.animationDelay = (i * 0.05) + 's';
+                    terminalText.insertBefore(span, cursor);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>
