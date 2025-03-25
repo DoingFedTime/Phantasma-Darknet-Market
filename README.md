@@ -1,6 +1,6 @@
 # Phantasma Darknet Market Analysis
 
-This repository contains a copy of the Phantasma darknet market, originally hosted at:
+This repository contains a copy of the Phantasma darknet market. The website capture was taken on March 4, 2025, and as of March 25, 2025, the site is non-operational. It was originally hosted at:
 `http://wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion`
 
 ## Critical Analysis of Phantasma Market

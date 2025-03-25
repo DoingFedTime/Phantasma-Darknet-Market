@@ -4,190 +4,401 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phantasma Darknet Market</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body {
-            background-color: #1a1a1a;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            margin: 0;
-            padding: 20px;
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f0f0f0;
+            --accent-color: #00cc99;
+            --accent-hover: #00ffaa;
+            --card-bg: #131313;
+            --danger-color: #ff3131;
+            --category-1: #5e35b1;
+            --category-2: #2e7d32;
+            --category-3: #c62828;
+            --category-4: #0277bd;
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 2rem;
+            background-image: 
+                radial-gradient(rgba(0, 204, 153, 0.05) 1px, transparent 1px),
+                radial-gradient(rgba(0, 204, 153, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
+
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 2.5rem;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
         }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .social-icons a {
-            color: #00ff00;
-            font-size: 24px;
-            transition: color 0.3s;
-        }
-        .social-icons a:hover {
-            color: #00cc00;
-        }
+
         h1 {
-            color: #00ff00;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0, 204, 153, 0.5);
         }
+
         .subtitle {
-            color: #666;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
         }
-        .terminal-text {
-            background-color: #000;
-            padding: 15px;
-            border-radius: 5px;
-            min-height: 20px;
-            font-size: 14px;
+
+        .github-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: var(--text-color);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s;
         }
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background-color: #00ff00;
-            animation: blink 1s steps(2, start) infinite;
+
+        .github-link:hover {
+            opacity: 1;
         }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+
         .category {
-            margin-bottom: 30px;
+            margin-bottom: 3rem;
+            animation: slideUp 0.6s ease-out;
+            animation-fill-mode: both;
         }
+
         .category-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         .category-icon {
-            margin-right: 10px;
+            font-size: 1.4rem;
         }
+
+        .category-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
         .items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
+
         .item {
-            background-color: #222;
-            padding: 15px;
-            border-radius: 5px;
-            border: 1px solid #333;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        .item-badge {
-            color: #00ff00;
-            font-size: 12px;
-            margin-bottom: 5px;
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-color);
         }
+
+        .item:hover::before {
+            opacity: 1;
+        }
+
+        .item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-color);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
         .item-title {
-            margin: 10px 0;
-            font-size: 16px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
         }
+
+        .item a {
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
         .btn {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #333;
-            color: #00ff00;
-            text-decoration: none;
-            border-radius: 3px;
-            font-size: 14px;
-        }
-        footer {
-            margin-top: 40px;
+            background-color: rgba(0, 204, 153, 0.15);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
             text-align: center;
-            font-size: 14px;
+            margin-top: 1rem;
+            display: block;
+            width: 100%;
         }
-        footer a {
-            color: #00ff00;
-            text-decoration: none;
-            margin: 0 5px;
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .drugs { --item-color: var(--category-1); }
+        .hacking { --item-color: var(--category-2); }
+        .market { --item-color: var(--category-3); }
+        .profile { --item-color: var(--category-4); }
+
+        .drugs::before { background: var(--category-1); }
+        .hacking::before { background: var(--category-2); }
+        .market::before { background: var(--category-3); }
+        .profile::before { background: var(--category-4); }
+
+        .item-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            margin-bottom: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .drugs .item-badge { color: var(--category-1); border-left: 3px solid var(--category-1); }
+        .hacking .item-badge { color: var(--category-2); border-left: 3px solid var(--category-2); }
+        .market .item-badge { color: var(--category-3); border-left: 3px solid var(--category-3); }
+        .profile .item-badge { color: var(--category-4); border-left: 3px solid var(--category-4); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 204, 153, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 204, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 204, 153, 0); }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2rem;
+            background-color: var(--accent-color);
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .terminal-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .terminal-text span {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeInChars 0.1s forwards;
+        }
+
+        @keyframes fadeInChars {
+            to { opacity: 1; }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Animation delay for categories */
+        .category:nth-child(1) { animation-delay: 0.1s; }
+        .category:nth-child(2) { animation-delay: 0.2s; }
+        .category:nth-child(3) { animation-delay: 0.3s; }
+        .category:nth-child(4) { animation-delay: 0.4s; }
+        .category:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .items {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .github-link {
+                position: static;
+                display: inline-block;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .items {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Special effects */
+        .glow-effect {
+            position: relative;
+        }
+
+        .glow-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 20px 5px rgba(0, 204, 153, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .glow-effect:hover::after {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="social-icons">
-                <a href="https://rumble.com/user/DoingFedTime" target="_blank"><i class="fab fa-rumble"></i></a>
-                <a href="https://www.youtube.com/@sam_bent" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://x.com/DoingFedTime" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/sam-bent/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/DoingFedTime" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://sambent.com" target="_blank"><i class="fas fa-globe"></i></a>
-                <a href="https://www.instagram.com/sambentoffical/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="http://dailydwusclfsu7fzwydc5emidexnesmdlzqmz2dxnx5x4thl42vj4qd.onion/" target="_blank"><i class="fas fa-user-secret"></i></a>
-            </div>
-            <h1>Phantasma Darknet Market</h1>
-            <div class="subtitle">A secure marketplace for anonymous transactions</div>
-            <div class="terminal-text" id="terminalText">
-                <span id="cursor" class="cursor"></span>
-            </div>
+            <h1>Phantasma</h1>
+            <div class="subtitle">A basic copy of: http://wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion</div>
         </header>
+        <div style="text-align: center; margin-bottom: 1rem;">
+            <a href="https://rumble.com/user/DoingFedTime" target="_blank" style="color: #00ff00; margin: 0 0.5rem;"><i class="fab fa-rumble"></i></a>
+            <a href="https://www.youtube.com/@sam_bent" target="_blank" style="color: #00ff00; margin: 0 0.5rem;"><i class="fab fa-youtube"></i></a>
+            <a href="https://x.com/DoingFedTime" target="_blank" style="color: #00ff00; margin: 0 0.5rem;"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/sam-bent/" target="_blank" style="color: #00ff00; margin: 0 0.5rem;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/DoingFedTime" target="_blank" style="color: #00ff00; margin: 0 0.5rem;"><i class="fab fa-github"></i></a>
+            <a href="https://sambent.com" target="_blank" style="color: #00ff00; margin: 0 0.5rem;"><i class="fas fa-home"></i></a>
+            <a href="https://www.instagram.com/sambentoffical/" target="_blank" style="color: #00ff00; margin: 0 0.5rem;"><i class="fab fa-instagram"></i></a>
+        </div>
 
-        <section class="category">
-            <div class="category-header">
-                <div class="category-icon">🛒</div>
-                <h2 class="category-title">Market Pages</h2>
-            </div>
-            <div class="items">
-                <div class="item market">
-                    <div class="item-badge">Main</div>
-                    <h3 class="item-title">Market Homepage</h3>
-                    <a href="403 Forbidden_http___wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion_assets_.html" class="btn">View Page</a>
-                </div>
-                <div class="item market">
-                    <div class="item-badge">Security</div>
-                    <h3 class="item-title">PGP Key</h3>
-                    <a href="Define PGP key _ Phantasma_http___wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion_set_pgp-key.html" class="btn">View Page</a>
-                </div>
-            </div>
-        </section>
 
         <section class="category">
             <div class="category-header">
                 <div class="category-icon">👤</div>
-                <h2 class="category-title">Account Pages</h2>
+                <h2 class="category-title">Account</h2>
             </div>
             <div class="items">
-                <div class="item profile">
+                <div class="item profile glow-effect">
                     <div class="item-badge">Auth</div>
+                    <h3 class="item-title">Login</h3>
+                    <a href="pages/Access Queue _ Phantasma_login.html" class="btn">View Page</a>
+                </div>
+                <div class="item profile glow-effect">
+                    <div class="item-badge">Keys</div>
+                    <h3 class="item-title">PGP Keys</h3>
+                    <a href="pages/Define PGP key _ Phantasma_set_pgp-key.html" class="btn">View Page</a>
+                </div>
+                <div class="item profile glow-effect">
+                    <div class="item-badge">Register</div>
                     <h3 class="item-title">Register</h3>
-                    <a href="Register _ Phantasma_http___wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion_register.html" class="btn">View Page</a>
+                    <a href="pages/Register _ Phantasma_register.html" class="btn">View Page</a>
+                </div>
+                 <div class="item profile glow-effect">
+                    <div class="item-badge">403</div>
+                    <h3 class="item-title">403</h3>
+                    <a href="pages/403 Forbidden_assets_.html" class="btn">View Page</a>
                 </div>
             </div>
         </section>
 
-        <section class="category">
-            <div class="category-header">
-                <div class="category-icon">🔐</div>
-                <h2 class="category-title">Security</h2>
-            </div>
-            <div class="items">
-                <div class="item hacking">
-                    <div class="item-badge">PGP</div>
-                    <h3 class="item-title">PGP Key</h3>
-                    <a href="pgp_http___wuwvvhnwteoxaf6ytlndvfr5gsxt7jsot5bdgeecagt53ntrrkatbuad.onion_pgp.txt.html" class="btn">View Page</a>
-                </div>
-            </div>
-        </section>
+
+
+
+
+
+
+
+
 
         <footer>
-            <p>© 2024 Phantasma Market</p>
+            <p>
+                <a href="https://rumble.com/user/DoingFedTime" target="_blank"style="color: #00ff00;">Rumble</a>
+                <a href="https://www.youtube.com/@sam_bent" target="_blank"style="color: #00ff00;">Youtube</a>
+                <a href="https://x.com/DoingFedTime" target="_blank"style="color: #00ff00;">X</a>
+                <a href="https://www.linkedin.com/in/sam-bent/" target="_blank"style="color: #00ff00;">Linkedin</a>
+                <a href="https://github.com/DoingFedTime" target="_blank"style="color: #00ff00;">Github</a>
+                <a href="https://sambent.com" target="_blank"style="color: #00ff00;">My Site</a>
+                <a href="https://www.instagram.com/sambentoffical/" target="_blank"style="color: #00ff00;">IG</a>
+            </p>
         </footer>
     </div>
 
     <script>
+        // Terminal text animation
         document.addEventListener('DOMContentLoaded', function() {
-            const text = "Welcome to Phantasma Market";
+            const text = "Visit:youtube.com/@sam_bent";
             const terminalText = document.getElementById('terminalText');
             const cursor = document.getElementById('cursor');
             let i = 0;
@@ -204,7 +415,36 @@
             }
             
             setTimeout(typeWriter, 500);
+            
+            // Add hover animation to items
+            const items = document.querySelectorAll('.item');
+            items.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.animationName = 'pulse';
+                    this.style.animationDuration = '1.5s';
+                    this.style.animationIterationCount = 'infinite';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.animationName = '';
+                });
+            });
         });
+
+        // Add random glitch effect to title
+        setInterval(() => {
+            const title = document.querySelector('h1');
+            title.style.textShadow = Math.random() > 0.95 ? 
+                '0 0 10px rgba(0, 204, 153, 0.8), 0 0 20px rgba(0, 204, 153, 0.6), 0 0 30px rgba(0, 204, 153, 0.4)' : 
+                '0 0 10px rgba(0, 204, 153, 0.5)';
+            
+            if (Math.random() > 0.98) {
+                title.style.letterSpacing = Math.random() * 4 + 'px';
+                setTimeout(() => {
+                    title.style.letterSpacing = '2px';
+                }, 100);
+            }
+        }, 200);
     </script>
 </body>
 </html>
